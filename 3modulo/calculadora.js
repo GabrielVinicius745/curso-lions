@@ -3,6 +3,8 @@ const teclado = PromptSync();
 
 let resultado = 0
 let inicia = 0
+let verifica = true
+let resultadoTotal = 0
 
 function line() {
     console.log("=====================================")
@@ -31,6 +33,7 @@ function soma() {
         return;
     }
     resultado = dados.a + dados.b;
+    resultadoTotal = resultadoTotal + resultado;
 }
 function subtrai() {
     let dados = recebeDados();
@@ -38,6 +41,7 @@ function subtrai() {
         return;
     }
     resultado = dados.a - dados.b;
+    resultadoTotal = resultadoTotal + resultado;
 }
 function multiplica() {
     let dados = recebeDados();
@@ -45,6 +49,7 @@ function multiplica() {
         return;
     }
     resultado = dados.a * dados.b;
+    resultadoTotal = resultadoTotal + resultado;
 }
 function divide() {
     let dados = recebeDados();
@@ -52,13 +57,18 @@ function divide() {
         return;
     }
     resultado = dados.a / dados.b;
+    if (dados.b === 0) {
+        console.log("Não é possível dividir por zero!");
+    }
+    resultadoTotal = resultadoTotal + resultado;
 }
 function porcentagem() {
-    let dados = recebeDados();
-    if (dados === null) {
+    let a = parseFloat(teclado("Digite o valor: "));
+    if (isNaN(a)) {
+        console.log("Digite um número válido!");
         return;
     }
-    resultado = dados.a;
+    resultado = ( a / resultadoTotal) * 100;
 }
 function iniciaPrograma() {
     switch (inicia) {
@@ -78,10 +88,10 @@ function iniciaPrograma() {
             porcentagem()
             break
         case 6:
-            mostraResultado()
+            console.log(`Resultado total: ${resultadoTotal}`);
             break
         case 7: 
-            sair()
+            verifica = false
             break
         default:
             console.log("Insira um número válido!");
@@ -89,9 +99,14 @@ function iniciaPrograma() {
             iniciaPrograma()
 
     }
+
 }
 
-menu();
-inicia = parseFloat(teclado("R: "))
-iniciaPrograma()
-console.log(resultado);
+while (verifica === true) {
+    menu();
+    inicia = parseFloat(teclado("R: "));
+    iniciaPrograma();
+    if (inicia !== 6) {
+        console.log(`Resultado: ${resultado}`);
+    } 
+}

@@ -1,0 +1,4 @@
+git init - inicializar o repositorio
+git commit - realizar o commit
+git push -u origin main - comando para subir os commits para o respositório
+obs: -u origin main é para dizer qual minha branch principal
