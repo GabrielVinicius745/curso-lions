@@ -6,9 +6,11 @@ function calcularMedia() {
     if (numeros.length === 0) {
         return "A lista está vazia.";
     }
+
     for (let i = 0; i < numeros.length; i++) {
         soma += numeros[i];
     }
+    
     let media = soma / numeros.length;
     return media;
 }
