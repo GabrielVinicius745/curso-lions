@@ -13,4 +13,4 @@ const contatos = [
     },
 ]
 
-export default contatos
+export default contatos;

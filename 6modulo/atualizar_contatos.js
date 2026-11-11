@@ -1,7 +1,7 @@
 
 function atualizarContato(contatos, id, novosDados) {
 
-    const indice = contatos.findIndex(contato => contato.id === id );
+    const indice = contatos.findIndex(contato => contato.id ===  id);
 
     if (indice === -1) {
         console.log("Erro: Cadastro não encontrado.");
@@ -18,8 +18,8 @@ function atualizarContato(contatos, id, novosDados) {
         }
     }
 
-    contatos[indice].nome = novosDados.nome && contatos[indice].nome;
-    contatos[indice].email = novosDados.email && contatos[indice].email;
+    contatos[indice].nome = novosDados.nome || contatos[indice].nome;
+    contatos[indice].email = novosDados.email || contatos[indice].email;
 
     if (novosDados.telefones || novosDados.telefones.length > 0) {
         contatos[indice].telefones = novosDados.telefones;
